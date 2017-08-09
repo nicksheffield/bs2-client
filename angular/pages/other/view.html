@@ -1,0 +1,25 @@
+<div class="page-other">
+	<h1>Other</h1>
+
+	<a href="/">Home</a>
+
+	<hr>
+
+	<i class="fa fa-cog fa-spin fa-3x fa-fw" ng-if="!resolved"></i>
+
+	<div class="row" ng-if="resolved">
+		<div class="col-6">
+			<h2>NZD: {{ cur.rates.NZD }}</h2>
+			<h2>AUD: {{ cur.rates.AUD }}</h2>
+			<h2>USD: {{ cur.rates.USD }}</h2>
+			<h2>JPY: {{ cur.rates.JPY }}</h2>
+		</div>
+		<div class="col-6">
+			<h2>NZD: {{ oth.rates.NZD }}</h2>
+			<h2>AUD: {{ oth.rates.AUD }}</h2>
+			<h2>USD: {{ oth.rates.USD }}</h2>
+			<h2>JPY: {{ oth.rates.JPY }}</h2>
+		</div>
+	</div>
+	
+</div>

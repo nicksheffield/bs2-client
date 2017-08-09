@@ -1,0 +1,12 @@
+[
+	{
+		"name": "home",
+		"url": "/",
+		"path": "./pages/home"
+	},
+	{
+		"name": "other",
+		"url": "/other",
+		"path": "./pages/other"
+	}
+]

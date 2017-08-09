@@ -1,0 +1,23 @@
+<div class="ns-dropdown2" id="dropdown-{{ unique }}" ng-class="{'ns-dropdown2-small': config.small}">
+	<input type="text" class="form-control ns-dropdown2-input" ng-model="input" placeholder="{{ config.placeholder }}" ng-class="{'form-control-sm': config.small}">
+
+	<div class="ns-dropdown2-controls">
+		<span ng-click="clear()" ng-if="config.clearable && hasSelected()" class="ns-dropdown2-icon ns-dropdown2-clear"><i class="fa fa-times-circle"></i></span>
+		<span class="ns-dropdown2-icon ns-dropdown2-chevron"><i class="fa fa-chevron-down"></i></span>
+	</div>
+
+	<div class="ns-dropdown2-list" ng-if="isFocused()">
+		<ul>
+			<li 
+				ng-repeat="item in filtered" 
+				class="ns-dropdown2-item" 
+				ng-class="{'ns-dropdown2-keyboardFocus': keyboardFocus === item, 'ns-dropdown2-supressKeyboardFocus': keyboardFocus === item && supressKeyboardFocus}"
+			>
+				<div ng-click="choose(item)" class="ns-dropdown2-item-clickable">
+					<input type="checkbox" ng-checked="isSelected(item)" ng-if="config.multiple" class="ns-dropdown2-checkbox">
+					{{ item.text }}
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
