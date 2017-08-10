@@ -1,12 +1,22 @@
 import app from '../app'
 
-app.factory('UserManager', function($schema, $flatten, $rest) {
-	const service = angular.extend({}, $flatten, $rest)
+app.factory('UserManager', function($rest, $modelSerializer, $schema, $resourceFactory) {
+	const service = angular.extend({}, $rest, $modelSerializer)
 
-	service.resource = User
+	service.name = 'UserManager'
+
+	service.construct = function User(){}
+
+	service.resource = $resourceFactory('user', {
+		getWithToken: {
+			methods: 'GET',
+			url: '/api/auth',
+			params: { with: 'tutors_group.type' }
+		}
+	})
 
 	service.schema = {
-		id: $schema.Number,
+		id: $schema.Integer,
 		name: $schema.String,
 		email: $schema.String,
 		phone: $schema.String,
@@ -19,12 +29,10 @@ app.factory('UserManager', function($schema, $flatten, $rest) {
 		active: $schema.Boolean,
 		created_at: $schema.Date,
 		updated_at: $schema.Date,
-		_relationships: [
-			$schema.BelongsTo('Group')
-		]
+		_relationships: {
+			group: $schema.BelongsTo('Group')
+		}
 	}
-
-	console.log(service)
 
 	return service
 })

@@ -9,14 +9,14 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 })
 
 module.exports = {
-	entry: './angular/index.js',
+	entry: './angular/entry.js',
 	output: {
 		path: path.resolve('dist'),
 		filename: 'bundle.js'
 	},
 	module: {
 		loaders: [
-			{ test: /\.js$/,                   loader: 'babel-loader',  exclude: /node_modules/ },
+			{ test: /\.js$/,                   loader: 'babel-loader',  exclude: /node_modules/, options: { sourceMap: true } },
 			{ test: /\.styl$/,                 loader: 'style-loader!css-loader!stylus-loader' },
 			{ test: /\.(jpe?g|png|gif|svg)$/i, loader: 'file-loader?name=/images/[name].[ext]' },
 			{ test: /\.css$/,                  loader: "style-loader!css-loader" },

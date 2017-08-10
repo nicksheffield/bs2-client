@@ -1,10 +1,12 @@
 import angular from 'angular'
 import uiRouter from '@uirouter/angularjs'
 import ngAsync from 'ng-async'
+import ngResource from 'angular-resource'
 
-const app = angular.module('app', [
+const dependencies = [
 	uiRouter,
-	ngAsync.name
-])
+	ngAsync.name,
+	ngResource
+]
 
-export default app
+export default angular.module('app', dependencies)

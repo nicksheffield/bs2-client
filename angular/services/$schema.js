@@ -1,24 +1,40 @@
 import app from '../app'
+import moment from 'moment'
+import { isNone } from '../helpers/Object'
 
 app.factory('$schema', function($injector) {
 	const service = {}
 
 
 	// Primitives
-
 	service.String = {
-		serialize:   x => String(x),
-		deserialize: x => String(x)
+		serialize:   x => isNone(x) ? '' : String(x),
+		deserialize: x => isNone(x) ? '' : String(x)
 	}
 
-	service.Number = {
-		serialize:   x => String(x),
-		deserialize: x => parseFloat(x)
+	service.Float = {
+		serialize:   x => isNone(x) ? '' : String(x),
+		deserialize: x => isNone(x) ? null : parseFloat(x)
 	}
+
+	service.Integer = {
+		serialize:   x => isNone(x) ? '' : String(x),
+		deserialize: x => isNone(x) ? null : parseInt(x)
+	}
+
+	service.Number = service.Float
 
 	service.Date = {
-		serialize:   x => moment(x).format('YYYY-MM-DD HH:mm:ss'),
-		deserialize: x => moment(x).toDate()
+		serialize: x => {
+			if (x && !isNaN(x.valueOf())) {
+				return moment(x).format('YYYY-MM-DD HH:mm:ss')
+			}
+			return ''
+		},
+		deserialize: x => {
+			let date = moment(x).toDate()
+			return !isNaN(date) ? date : null
+		}
 	}
 
 	service.Boolean = {
@@ -28,18 +44,46 @@ app.factory('$schema', function($injector) {
 
 
 	// Relationships
-
 	service.BelongsTo = (resource, prop) => {
-		// let manager = $injector.get(`${resource}Manager`)
-		// let model = $injector.get(resource)
+		return {
+			deserialize: (item, relationshipProp) => {
+				let $manager = $injector.get(`${resource}Manager`)
+				let thing = item[prop || relationshipProp]
 
-		return x => {
-			
+				if (!thing) return null
+
+				return $manager.deserialize(thing)
+			},
+			serialize: (item, relationshipProp) => {
+				let $manager = $injector.get(`${resource}Manager`)
+				let thing = item[prop || relationshipProp]
+
+				if (!thing) return null
+
+				return $manager.serialize(thing)
+			}
 		}
 	}
 
-	service.hasMany = (resource, prop, foreign_key) => {
-		
+	service.HasMany = (resource, prop) => {
+		return {
+			deserialize: (item, relationshipProp) => {
+				let $manager = $injector.get(`${resource}Manager`)
+				let things = item[prop || relationshipProp]
+
+				if (!things) return null
+
+				return things.map(thing => $manager.deserialize(thing))
+			},
+			serialize: (item, relationshipProp) => {
+				let $manager = $injector.get(`${resource}Manager`)
+				let things = item[prop || relationshipProp]
+
+				if (!things) return null
+
+				return things.map(thing => $manager.serialize(thing))
+			}
+		}
 	}
 
 	return service

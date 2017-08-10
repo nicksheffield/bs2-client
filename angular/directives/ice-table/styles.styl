@@ -1,0 +1,62 @@
+@import '../../styles/colors'
+@import '../../styles/misc'
+
+.ice-table
+	
+	table
+		table-layout fixed
+		background color-ice-table-cell
+
+	thead th
+		border-bottom 1px solid color-ice-table-border
+
+	td, th
+		border 1px solid color-ice-table-border
+		word-break break-word
+
+	th
+		padding 1em
+		background color-ice-table-th-background
+
+	.sorter
+		cursor pointer
+
+		&:hover, &.sorter-active
+			color color-primary
+		
+		.sorter-icon
+			color #bbb
+
+		&.sorter-active .sorter-icon
+			color color-primary
+
+	input
+		font-weight normal
+
+	.ns-dropdown2
+		width 100%
+		max-width 100%
+
+	th.button-col, td.button-col
+		width 80px
+
+		& > *
+			margin-right 0.5em
+
+			&:last-child
+				margin-right 0
+	
+	.no-records
+		td
+			padding 2em
+			text-align center
+
+	.ice-table-limit-select
+		margin 0 0.25em
+
+	.ice-table-indicator
+		width 10px
+		height 10px
+		border-radius 5px
+		display inline-block
+		margin-right 0.5em

@@ -1,6 +1,7 @@
 {
 	"requireSpaceAfterKeywords": [
-		"if"
+		"if",
+		"for"
 	],
 	"disallowSemicolons": true
 }

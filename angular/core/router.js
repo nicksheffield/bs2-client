@@ -1,5 +1,5 @@
-import app from './app'
-import routes from './routes.json'
+import app from '../app'
+import routes from '../config/routes'
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 	// no more !#
@@ -19,11 +19,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 			// this is the url the user will hit to load this route
 			url: route.url,
 			// this is the actual controller function that is exported from controller.js
-			controller: require(`${route.path}/index`).default,
+			controller: require(`../${route.path}/controller`).default,
 			// this is the actual html content of view.html
-			template: require(`${route.path}/view.html`),
+			template: require(`../${route.path}/view.html`),
 			// this is where any additional route info goes for preRoute parsing
-			date: route.data || {}
+			data: route.data || {}
 		}
 
 		// need to pass the obj back into the next reduce iteration

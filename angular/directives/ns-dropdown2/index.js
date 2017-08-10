@@ -219,6 +219,7 @@ app.directive('dropdown2', function($filter) {
 			let target = angular.element(e.target)
 
 			if (scope.isFocused() && target.closest('#dropdown-' + scope.unique).length === 0) {
+				e.preventDefault()
 				scope.$apply(() => scope.blur())
 			}
 		}

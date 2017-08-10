@@ -1,12 +1,12 @@
-[
+export default [
 	{
 		"name": "home",
 		"url": "/",
-		"path": "./pages/home"
+		"path": "routes/home"
 	},
 	{
 		"name": "other",
 		"url": "/other",
-		"path": "./pages/other"
+		"path": "routes/other"
 	}
 ]
