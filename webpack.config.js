@@ -9,10 +9,17 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 })
 
 module.exports = {
-	entry: './angular/entry.js',
+	entry: './angular/app.js',
 	output: {
 		path: path.resolve('dist'),
 		filename: 'bundle.js'
+	},
+	resolve: {
+		modules: [
+			path.resolve('./angular'),
+			path.resolve('./node_modules')
+		],
+		extensions: ['.js', '.styl']
 	},
 	module: {
 		loaders: [

@@ -1,4 +1,4 @@
-import app from '../app'
+import app from 'app'
 
 app.factory('GroupManager', function($rest, $modelSerializer, $schema, $resourceFactory) {
 	const service = angular.extend({}, $rest, $modelSerializer)

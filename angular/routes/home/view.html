@@ -5,16 +5,5 @@
 
 	<hr>
 
-	<form ng-submit="submit()">
-		<div class="form-group">
-			<label for="code">Code</label>
-			<input type="text" name="code" id="code" class="form-control" ng-model="code">
-		</div>
-
-		<div class="form-group">
-			<input type="submit" class="btn btn-primary" value="Save">
-		</div>
-	</form>
-
-	<ice-table data="usersTable" ng-if="helper.allResolved(group)"></ice-table>
+	<ice-table data="vm.usersTable" ng-if="allResolved(vm.group)"></ice-table>
 </div>

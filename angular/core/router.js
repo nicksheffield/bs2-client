@@ -1,5 +1,5 @@
-import app from '../app'
-import routes from '../config/routes'
+import app from 'app'
+import routes from 'config/routes'
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 	// no more !#
@@ -33,7 +33,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
 
 	// for each state (essentially same thing as route)
-	for(var stateName in states) {
+	for (var stateName in states) {
 		// get the state name
 		var state = states[stateName]
 		

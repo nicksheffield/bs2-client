@@ -1,5 +1,5 @@
-import app from '../app'
-import config from '../config/config'
+import app from 'app'
+import config from 'config'
 
 app.factory('$resourceFactory', function($resource) {
 	const service = function(slug, methods = {}) {

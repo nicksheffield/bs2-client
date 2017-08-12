@@ -1,5 +1,5 @@
-import app from '../../app'
-import './styles.styl' 
+import app from 'app'
+import './styles' 
 
 app.directive('iceTable', function($filter) {
 	function link(scope, el, attrs) {

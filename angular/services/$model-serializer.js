@@ -1,4 +1,4 @@
-import app from '../app'
+import app from 'app'
 
 // Use as a mixin
 app.factory('$modelSerializer', function() {
@@ -6,6 +6,9 @@ app.factory('$modelSerializer', function() {
 
 	/**
 	 * Creates a new object based of the data from item, and the transformers from this.schema
+	 * @method deserialize
+	 * @param {Resource} item
+	 * @return {Object}
 	 */
 	service.deserialize = function(item) {
 		const obj = new this.construct()
@@ -29,6 +32,12 @@ app.factory('$modelSerializer', function() {
 		return obj
 	}
 
+	/**
+	 * Prepares data for sending to the API
+	 * @method serialize
+	 * @param {Resource} item
+	 * @return {Object}
+	 */
 	service.serialize = function(item) {
 		const obj = {}
 

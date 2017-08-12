@@ -1,4 +1,5 @@
-import app from '../app'
+import app from 'app'
+import { isNumber, ife } from 'helpers'
 
 // Use as a mixin
 app.factory('$rest', function($rootScope, $timeout, $http, $async) {
@@ -11,10 +12,8 @@ app.factory('$rest', function($rootScope, $timeout, $http, $async) {
 	 */
 	service.get = async function(query) {
 		let response = this.resource.get(query)
-		let result = await response.$promise
-
+		await response.$promise
 		$timeout(() => $rootScope.$apply())
-
 		return this.deserialize(response)
 	}
 
@@ -26,10 +25,8 @@ app.factory('$rest', function($rootScope, $timeout, $http, $async) {
 	 */
 	service.query = async function(query = {}) {
 		let response = this.resource.query(query)
-		let result = await response.$promise
-
+		await response.$promise
 		$timeout(() => $rootScope.$apply())
-
 		return response.map(x => this.deserialize(x))
 	}
 
@@ -54,12 +51,9 @@ app.factory('$rest', function($rootScope, $timeout, $http, $async) {
 	 * @return {Object}
 	 */
 	service.create = async function(item) {
-		console.log(this.serialize(item))
 		let response = this.resource.save(this.serialize(item))
-		let result = await response.$promise
-
+		await response.$promise
 		$timeout(() => $rootScope.$apply())
-
 		return this.deserialize(response)
 	}
 
@@ -71,10 +65,8 @@ app.factory('$rest', function($rootScope, $timeout, $http, $async) {
 	 */
 	service.update = async function(item) {
 		let response = this.resource.update({id: item.id}, this.serialize(item))
-		let result = await response.$promise
-
+		await response.$promise
 		$timeout(() => $rootScope.$apply())
-
 		return this.deserialize(response)
 	}
 
@@ -85,12 +77,9 @@ app.factory('$rest', function($rootScope, $timeout, $http, $async) {
 	 * @return {Object}
 	 */
 	service.delete = async function(item) {
-		let query = {id: typeof item === 'number' ? item : item.id}
-		let response = this.resource.delete(query)
-		let result = await response.$promise
-
+		let response = this.resource.delete(ife(isNumberStr(item), item, item.id))
+		await response.$promise
 		$timeout(() => $rootScope.$apply())
-
 		return this.deserialize(response)
 	}
 

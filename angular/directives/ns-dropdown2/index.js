@@ -1,5 +1,5 @@
-import app from '../../app'
-import './styles.styl'
+import app from 'app'
+import './styles'
 
 app.directive('dropdown2', function($filter) {
 	function link(scope, element, attrs) {

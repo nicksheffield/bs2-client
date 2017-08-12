@@ -1,6 +1,6 @@
-import app from '../app'
+import app from 'app'
 import moment from 'moment'
-import { isNone } from '../helpers/Object'
+import { isNone } from 'helpers'
 
 app.factory('$schema', function($injector) {
 	const service = {}
@@ -9,6 +9,7 @@ app.factory('$schema', function($injector) {
 	// Primitives
 	service.String = {
 		serialize:   x => isNone(x) ? '' : String(x),
+		serialize:   x => ife(isNone(x), '', String(x)),
 		deserialize: x => isNone(x) ? '' : String(x)
 	}
 

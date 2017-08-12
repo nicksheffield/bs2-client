@@ -13,3 +13,4 @@ const conf = {
 }
 
 export default conf[env.environment]
+export const config = conf
