@@ -1,0 +1,16 @@
+TODO
+	figure out a way to serve the correct page when you're running a built version of the app.
+		The reason is, using webpack dev server gives you the history api fallback.
+		I wonder if a microframework is a good choice for this, or maybe just go with a 
+		custom little php solution.
+	auth
+		Add auth stuff to the resolvers I guess, or maybe just $transition
+	images
+		Work out a way to get images loaded properly in the built version
+	sweetalert2
+		Make sure since I rolled my own angular wrapper, that I don't just fuckin leave it like
+		it is, and remove that ng-sweetalert-2 bullshit
+	Add sentry
+		https://sentry.io/for/angular/
+	Make a Generator
+		So that I don't have to keep copying and pasting existing files

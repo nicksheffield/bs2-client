@@ -2,7 +2,7 @@ import app from 'app'
 import { isNumber, ife } from 'helpers'
 
 // Use as a mixin
-app.factory('$rest', function($rootScope, $timeout, $http, $async) {
+app.factory('$rest', function($rootScope, $timeout, $http) {
 	const service = {}
 
 	/**

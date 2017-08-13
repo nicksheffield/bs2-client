@@ -12,11 +12,13 @@ app.factory('GroupManager', function($rest, $modelSerializer, $schema, $resource
 	service.schema = {
 		id: $schema.Integer,
 		code: $schema.String,
+		student_count: $schema.Integer,
 		created_at: $schema.Date,
 		updated_at: $schema.Date,
 		_relationships: {
 			users: $schema.HasMany('User'),
-			// group_type: $schema.BelongsTo('GroupType'),
+			type: $schema.BelongsTo('GroupType'),
+			tutors: $schema.HasMany('User', 'tutors')
 		}
 	}
 

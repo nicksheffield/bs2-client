@@ -1,18 +1,19 @@
 import './styles'
 import { fmt } from 'helpers'
 
-export default async function HomeController($scope, UserManager, GroupManager) {
+/* @ngInject */
+export default function($scope) {
 	const vm = $scope.vm = {}
 
-	vm.group = await GroupManager.get({id: 1, with: 'users'})
+	vm.bookings = []
 	
-	vm.usersTable = {
-		items: vm.group.users,
+	vm.mainTable = {
+		items: vm.bookings,
 		cols: [
-			{ name: 'Name', prop: 'name' },
-			{ name: 'Email', prop: 'email' }
+			{
+				name: 'Pickup',
+				prop: 'pickup_at'
+			}
 		]
 	}
-
-	vm.resolved = true
 }

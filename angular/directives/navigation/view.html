@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
+	<img src="angular/assets/if__q_2006975.svg" width="50" class="mr-3">
+	<a class="navbar-brand" href="#">Yoobee Quartermaster</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li ng-repeat="link in vm.links" class="nav-item" ng-class="{active: vm.isCurrent(link.state), dropdown: link.links.length}">
+				<a ng-if="!link.links.length" ui-sref="{{ link.state }}" class="nav-link">{{ link.text }}</a>
+				<span ng-if="link.links.length" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ link.text }}</span>
+				<div ng-if="link.links.length" class="dropdown-menu">
+					<a ng-repeat="sublink in link.links" class="dropdown-item" ui-sref="{{ sublink.state }}">{{ sublink.text }}</a>
+				</div>
+			</li>
+			<!-- <li class="nav-item" ng-class="{active: vm.isCurrent('home')}"><a class="nav-link" ui-sref="home">Home</a></li>
+			<li class="nav-item" ng-class="{active: current.name === 'other'}"><a class="nav-link" ui-sref="other">Other</a></li>
+			<li class="nav-item" ng-class="{active: current.name === 'third'}"><a class="nav-link" ui-sref="third">Third</a></li>
+			<li class="nav-item dropdown">
+				<span class="nav-link dropdown-toggle" data-toggle="dropdown">Manage</span>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="#">Users</a>
+					<a class="dropdown-item" href="#">Classes</a>
+					<a class="dropdown-item" href="#">Products</a>
+					<a class="dropdown-item" href="#">Units</a>
+					<a class="dropdown-item" href="#">Kits</a>
+				</div>
+			</li> -->
+		</ul>
+
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="btn btn-primary" href="/book">Make Booking</a></li>
+		</ul>
+	</div>
+</nav>

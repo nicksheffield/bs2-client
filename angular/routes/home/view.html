@@ -1,9 +1,7 @@
-<div class="page-home">
+<header class="page-header">
 	<h1>Home</h1>
+</header>
 
-	<a href="/other">Other</a>
-
-	<hr>
-
-	<ice-table data="vm.usersTable" ng-if="allResolved(vm.group)"></ice-table>
+<div class="page-content">
+	<ice-table data="vm.mainTable"></ice-table>
 </div>

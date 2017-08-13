@@ -3,6 +3,7 @@ import app from 'app'
 // Global helpers
 import helpers from 'helpers'
 
+/* @ngInject */
 app.run(function($rootScope) {
 	
 	// Add all global helpers as methods on $rootScope

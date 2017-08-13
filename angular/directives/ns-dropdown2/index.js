@@ -144,8 +144,6 @@ app.directive('dropdown2', function($filter) {
 				scope.selected = item
 				scope.ngModel = scope.getRealSelected(item)
 			}
-
-			console.log(scope.selected)
 		}
 
 		scope.clear = () => {

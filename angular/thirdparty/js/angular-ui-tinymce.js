@@ -1,0 +1,1 @@
+export default require('exports-loader?angular!angular-ui-tinymce').module('ui.tinymce')

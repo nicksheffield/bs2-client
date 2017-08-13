@@ -23,6 +23,7 @@ app.factory('UserManager', function($rest, $modelSerializer, $schema, $resourceF
 		id_number: $schema.String,
 		dob: $schema.Date,
 		admin: $schema.Boolean,
+		role: $schema.String,
 		can_book: $schema.Boolean,
 		can_book_reason: $schema.String,
 		new_user: $schema.Boolean,
@@ -30,7 +31,8 @@ app.factory('UserManager', function($rest, $modelSerializer, $schema, $resourceF
 		created_at: $schema.Date,
 		updated_at: $schema.Date,
 		_relationships: {
-			group: $schema.BelongsTo('Group')
+			group: $schema.BelongsTo('Group'),
+			// bookings: $schema.HasMany('Booking')
 		}
 	}
 
